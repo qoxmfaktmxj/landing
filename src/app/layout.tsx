@@ -10,14 +10,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.minseok91.cloud"),
   title: "민석 | 풀스택 개발자 포트폴리오",
   description:
     "9년차 백엔드/풀스택 엔지니어. HR/ERP 시스템, API 개발, 클라우드 인프라 운영.",
   keywords: ["풀스택 개발자", "포트폴리오", "Next.js", "HR시스템"],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "민석 | 풀스택 개발자 포트폴리오",
     description: "Enterprise 시스템을 만드는 개발자",
-    url: "https://www.minseok91.cloud",
+    url: "/",
     type: "website",
   },
 };

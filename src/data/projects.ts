@@ -16,7 +16,7 @@ export const projects: Project[] = [
     description: "인사관리 시스템",
     longDescription:
       "직원 정보, 조직 관리, 공통코드 관리 등 엔터프라이즈 HR 기능을 제공하는 풀스택 웹 애플리케이션",
-    thumbnail: "", // TODO: 스크린샷 추가 후 "/images/vibe-hr-thumb.png" 로 변경
+    thumbnail: "/images/vibe-hr-thumb.webp",
     url: "https://hr.minseok91.cloud",
     tags: ["Next.js", "PostgreSQL", "Prisma", "shadcn/ui"],
     status: "live",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     description: "개발 여정 기록",
     longDescription:
       "AI 학습, 인프라 구축, 개발 경험을 기록하는 기술 블로그",
-    thumbnail: "/images/blog-thumb.png",
+    thumbnail: "/images/blog-thumb.webp",
     url: "https://qoxmfaktmxj.github.io",
     tags: ["GitHub Pages", "Blog"],
     status: "live",
