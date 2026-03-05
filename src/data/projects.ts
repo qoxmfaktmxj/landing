@@ -27,7 +27,7 @@ export const projects: Project[] = [
     description: "개발 여정 기록",
     longDescription:
       "AI 학습, 인프라 구축, 개발 경험을 기록하는 기술 블로그",
-    thumbnail: "", // TODO: 스크린샷 추가 후 "/images/blog-thumb.png" 로 변경
+    thumbnail: "/images/blog-thumb.png",
     url: "https://qoxmfaktmxj.github.io",
     tags: ["GitHub Pages", "Blog"],
     status: "live",
