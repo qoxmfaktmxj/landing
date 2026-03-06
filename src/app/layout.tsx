@@ -11,6 +11,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.minseok91.cloud"),
+  icons: {
+    icon: "/icon.svg",
+  },
   title: "민석 | 풀스택 개발자 포트폴리오",
   description:
     "9년차 백엔드/풀스택 엔지니어. HR/ERP 시스템, API 개발, 클라우드 인프라 운영.",
