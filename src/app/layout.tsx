@@ -12,8 +12,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.minseok91.cloud"),
   icons: {
-    icon: [{ url: "/icon.svg" }, { url: "/favicon.ico" }],
-    shortcut: "/favicon.ico",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
   },
   title: "민석 | 풀스택 개발자 포트폴리오",
   description:
