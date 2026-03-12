@@ -11,17 +11,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "vibe-hr",
-    title: "VIBE-HR",
-    description: "인사관리 시스템",
-    longDescription:
-      "직원 정보, 조직 관리, 공통코드 관리 등 엔터프라이즈 HR 기능을 제공하는 풀스택 웹 애플리케이션",
-    thumbnail: "/images/vibe-hr-thumb-v3.webp",
-    url: "https://hr.minseok91.cloud",
-    tags: ["Next.js", "PostgreSQL", "Prisma", "shadcn/ui"],
-    status: "live",
-  },
-  {
     id: "blog",
     title: "기술 블로그",
     description: "개발 여정 기록",
@@ -41,6 +30,17 @@ export const projects: Project[] = [
     thumbnail: "/images/grid-thumb.png",
     url: "https://grid.minseok91.cloud/",
     tags: ["Next.js", "Data Grid", "B2B UI"],
+    status: "live",
+  },
+  {
+    id: "vibe-hr",
+    title: "VIBE-HR",
+    description: "인사관리 시스템",
+    longDescription:
+      "직원 정보, 조직 관리, 공통코드 관리 등 엔터프라이즈 HR 기능을 제공하는 풀스택 웹 애플리케이션",
+    thumbnail: "/images/vibe-hr-thumb-v3.webp",
+    url: "https://hr.minseok91.cloud",
+    tags: ["Next.js", "PostgreSQL", "Prisma", "shadcn/ui"],
     status: "live",
   },
 ];

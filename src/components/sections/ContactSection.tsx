@@ -5,7 +5,7 @@ const contacts = [
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:minseok91@minseok91.cloud",
+    href: "mailto:qoxmfaktmxj@naver.com",
     external: false,
   },
   {
