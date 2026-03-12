@@ -33,12 +33,14 @@ export const projects: Project[] = [
     status: "live",
   },
   {
-    id: "coming-soon",
-    title: "새로운 프로젝트",
-    description: "준비 중입니다",
-    thumbnail: "",
-    url: "#",
-    tags: [],
-    status: "coming_soon",
+    id: "vibe-grid",
+    title: "VibeGrid",
+    description: "업무용 그리드 테스트 허브",
+    longDescription:
+      "실무형 데이터 조회와 편집 흐름을 빠르게 검증할 수 있도록 만든 업무용 그리드 데모 프로젝트",
+    thumbnail: "/images/grid-thumb.png",
+    url: "https://grid.minseok91.cloud/",
+    tags: ["Next.js", "Data Grid", "B2B UI"],
+    status: "live",
   },
 ];
