@@ -2,7 +2,6 @@ export const navItems = [
   { label: "About", href: "#about" },
   { label: "Impact", href: "#impact" },
   { label: "Cases", href: "#projects" },
-  { label: "How I Work", href: "#how-i-work" },
   { label: "Writing", href: "#writing" },
   { label: "Contact", href: "#contact" },
 ];

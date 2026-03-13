@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import ImpactSection from "@/components/sections/ImpactSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
-import HowIWorkSection from "@/components/sections/HowIWorkSection";
 import WritingSection from "@/components/sections/WritingSection";
 import ContactSection from "@/components/sections/ContactSection";
 
@@ -15,7 +14,6 @@ export default function Home() {
         <HeroSection />
         <ImpactSection />
         <ProjectsSection />
-        <HowIWorkSection />
         <WritingSection />
         <ContactSection />
       </main>
