@@ -10,7 +10,7 @@ export default function ProjectsSection() {
       <SectionFrame>
         <ScrollReveal>
           <SectionHeader
-            eyebrow="Cases"
+            eyebrow="Project"
             title=""
             description=""
           />

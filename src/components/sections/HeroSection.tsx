@@ -79,9 +79,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#596176] md:text-xl">
-            백엔드로 개발을 시작했지만 지금의 강점은 특정 기술보다 AI를 활용해
-            문제를 구조화하고 실무에 맞는 시스템 개선으로 연결하는 능력에
-            있습니다.
+            AI를 활용해 시스템을 실무에 맞게 구현하는 백엔드 개발자 입니다.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -89,7 +87,7 @@ export default function HeroSection() {
               onClick={() => scrollToSection("projects")}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1F5EFF] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#194AC4]"
             >
-              대표 사례
+              프로젝트
               <ArrowRight className="h-4 w-4" />
             </button>
             <button
