@@ -1,89 +1,87 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+import { cn } from "@/lib/utils";
+import { navItems } from "@/data/siteContent";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("about");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    const updateNavState = () => {
+      setScrolled(window.scrollY > 16);
+
+      const viewportMarker = window.scrollY + window.innerHeight * 0.32;
+      let currentSection = navItems[0]?.href.replace("#", "") ?? "";
+
+      navItems.forEach((item) => {
+        const id = item.href.replace("#", "");
+        const element = document.getElementById(id);
+
+        if (element && element.offsetTop <= viewportMarker) {
+          currentSection = id;
+        }
+      });
+
+      setActiveSection(currentSection);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  useEffect(() => {
-    const sectionIds = ["about", "projects", "contact"];
-    const observers: IntersectionObserver[] = [];
+    updateNavState();
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { threshold: 0.4 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
+    window.addEventListener("scroll", updateNavState, { passive: true });
+    window.addEventListener("resize", updateNavState);
 
-    return () => observers.forEach((obs) => obs.disconnect());
+    return () => {
+      window.removeEventListener("scroll", updateNavState);
+      window.removeEventListener("resize", updateNavState);
+    };
   }, []);
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
+
     const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-[#E5E5E5] py-3"
+          ? "border-b border-[rgba(18,25,44,0.08)] bg-[rgba(243,241,235,0.78)] py-3 backdrop-blur-xl"
           : "bg-transparent py-5"
       )}
     >
-      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
+      <div className="mx-auto flex max-w-container items-center justify-between px-6 md:px-8">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="font-mono text-base font-medium text-[#111111] tracking-tight hover:text-[#0066FF] transition-colors duration-200"
-          style={{ fontFamily: "var(--font-jetbrains-mono), monospace" }}
+          className="text-sm font-semibold tracking-[0.16em] text-[#12192C] transition hover:text-[#1F5EFF]"
+          style={{ fontFamily: "var(--font-geist-mono), monospace" }}
         >
-          minseok91
+          MINSEOK91
         </button>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-2 rounded-full border border-[rgba(18,25,44,0.08)] bg-white/72 p-1 md:flex">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace("#", "");
+
             return (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
                 className={cn(
-                  "text-sm font-medium transition-colors duration-200 relative pb-0.5",
+                  "rounded-full px-4 py-2 text-sm font-medium transition",
                   isActive
-                    ? "text-[#111111] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-[#111111]"
-                    : "text-[#888888] hover:text-[#111111]"
+                    ? "bg-[#12192C] text-white"
+                    : "text-[#596176] hover:text-[#12192C]"
                 )}
               >
                 {item.label}
@@ -92,39 +90,39 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Mobile Hamburger */}
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-1 text-[#111111]"
-          aria-label="메뉴 열기"
+          onClick={() => setMobileOpen((prev) => !prev)}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(18,25,44,0.08)] bg-white/78 text-[#12192C] md:hidden"
+          aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
         >
-          {mobileOpen ? (
-            <X className="w-5 h-5" />
-          ) : (
-            <Menu className="w-5 h-5" />
-          )}
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-[#E5E5E5] px-6 py-4 flex flex-col gap-4">
-          {navItems.map((item) => (
-            <button
-              key={item.href}
-              onClick={() => handleNavClick(item.href)}
-              className={cn(
-                "text-left text-base font-medium transition-colors duration-200",
-                activeSection === item.href.replace("#", "")
-                  ? "text-[#111111]"
-                  : "text-[#888888]"
-              )}
-            >
-              {item.label}
-            </button>
-          ))}
+      {mobileOpen ? (
+        <div className="mx-6 mt-3 rounded-[28px] border border-[rgba(18,25,44,0.08)] bg-white/92 p-3 shadow-[0_20px_40px_rgba(18,25,44,0.08)] md:hidden">
+          <div className="grid gap-1">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace("#", "");
+
+              return (
+                <button
+                  key={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={cn(
+                    "rounded-2xl px-4 py-3 text-left text-sm font-medium transition",
+                    isActive
+                      ? "bg-[#12192C] text-white"
+                      : "text-[#596176] hover:bg-[#F5F7FB] hover:text-[#12192C]"
+                  )}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

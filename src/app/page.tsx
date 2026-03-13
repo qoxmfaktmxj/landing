@@ -1,8 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
-import AboutSection from "@/components/sections/AboutSection";
+import ImpactSection from "@/components/sections/ImpactSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import HowIWorkSection from "@/components/sections/HowIWorkSection";
+import WritingSection from "@/components/sections/WritingSection";
 import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
@@ -11,8 +13,10 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
+        <ImpactSection />
         <ProjectsSection />
+        <HowIWorkSection />
+        <WritingSection />
         <ContactSection />
       </main>
       <Footer />

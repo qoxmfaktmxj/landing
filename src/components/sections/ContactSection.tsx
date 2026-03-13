@@ -1,67 +1,89 @@
+import { BookOpen, Github, Mail } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Mail, Github, BookOpen } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
+import SectionFrame from "@/components/ui/SectionFrame";
+import { contactPrompts } from "@/data/siteContent";
 
 const contacts = [
   {
     icon: Mail,
     label: "Email",
     href: "mailto:qoxmfaktmxj@naver.com",
-    external: false,
   },
   {
     icon: Github,
     label: "GitHub",
     href: "https://github.com/qoxmfaktmxj",
-    external: true,
   },
   {
     icon: BookOpen,
     label: "Blog",
     href: "https://qoxmfaktmxj.github.io",
-    external: true,
   },
 ];
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-20 md:py-[120px] bg-white">
-      <div className="max-w-[1200px] mx-auto px-6">
-        {/* Section header */}
+    <section id="contact" className="px-6 py-20 md:px-8 md:py-28">
+      <SectionFrame>
         <ScrollReveal>
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#111111] mb-16 flex items-center gap-4">
-            Contact
-            <span className="flex-1 h-px bg-[#E5E5E5]" />
-          </h2>
+          <SectionHeader
+            eyebrow="Contact"
+            title="복잡한 사내 시스템을 개선, 신규 프로젝트 진행"
+            description="채용, 프로젝트 협업, 내부 도구 개선, 레거시 현대화 논의 모두 편하게 연락주세요."
+          />
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <div className="text-center max-w-sm mx-auto">
-            <p className="text-lg text-[#555555] mb-1">
-              함께 일하고 싶으시다면
-            </p>
-            <p className="text-lg text-[#555555] mb-12">편하게 연락주세요.</p>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <ScrollReveal direction="left">
+            <div className="rounded-[32px] border border-[rgba(18,25,44,0.08)] bg-white/92 p-7 shadow-[0_16px_40px_rgba(18,25,44,0.06)]">
+              <p
+                className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#3559D6]"
+                style={{ fontFamily: "var(--font-geist-mono), monospace" }}
+              >
+              </p>
+              <ul className="mt-4 grid gap-1 text-sm leading-7 text-[#596176]">
+                {contactPrompts.map((prompt) => (
+                  <li
+                    key={prompt}
+                    className="rounded-[22px] border border-[rgba(18,25,44,0.08)] bg-white px-5 py-4 shadow-[0_10px_26px_rgba(18,25,44,0.05)]"
+                  >
+                    <span className="block text-[15px] leading-7 text-[#4C5870]">
+                      {prompt}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
 
-            <div className="flex items-center justify-center gap-8 flex-wrap">
-              {contacts.map(({ icon: Icon, label, href, external }) => (
+          <ScrollReveal direction="right" delay={0.1}>
+            <div className="grid gap-3">
+              {contacts.map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="flex flex-col items-center gap-2.5 group"
+                  target={label === "Email" ? undefined : "_blank"}
+                  rel={label === "Email" ? undefined : "noopener noreferrer"}
+                  className="flex items-center justify-between rounded-[24px] border border-[rgba(18,25,44,0.08)] bg-white/84 px-5 py-4 transition hover:border-[#1F5EFF] hover:bg-white"
                 >
-                  <div className="w-14 h-14 rounded-2xl border border-[#E5E5E5] bg-white flex items-center justify-center group-hover:border-[#0066FF] group-hover:bg-[#F0F6FF] transition-all duration-200">
-                    <Icon className="w-5 h-5 text-[#888888] group-hover:text-[#0066FF] transition-colors duration-200" />
-                  </div>
-                  <span className="text-sm text-[#888888] group-hover:text-[#0066FF] transition-colors duration-200">
-                    {label}
+                  <span className="flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#F2F6FF] text-[#1F5EFF]">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="text-sm font-semibold text-[#12192C]">
+                      {label}
+                    </span>
+                  </span>
+                  <span className="text-sm font-medium text-[#596176]">
+                    연결하기
                   </span>
                 </a>
               ))}
             </div>
-          </div>
-        </ScrollReveal>
-      </div>
+          </ScrollReveal>
+        </div>
+      </SectionFrame>
     </section>
   );
 }

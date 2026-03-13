@@ -9,8 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        pretendard: ["Pretendard", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "JetBrains Mono", "monospace"],
+        sans: [
+          "Pretendard Variable",
+          "Pretendard",
+          "var(--font-geist)",
+          "sans-serif",
+        ],
+        mono: ["var(--font-geist-mono)", "monospace"],
       },
       maxWidth: {
         container: "1200px",
